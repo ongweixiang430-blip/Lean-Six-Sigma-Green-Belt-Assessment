@@ -1,0 +1,6 @@
+{
+  "name": "Lean Six Sigma Green Belt Assessment",
+  "description": "A comprehensive 100-question practice and certification exam simulator for Lean Six Sigma Green Belt based on a 200-question pool with detailed explanations and performance analytics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
