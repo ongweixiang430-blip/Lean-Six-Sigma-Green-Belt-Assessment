@@ -54,7 +54,7 @@ export default function App() {
   const isFormValid = useMemo(() => {
     return (
       candidateName.trim().length >= 2 &&
-      /^\d{8}$/.test(candidateStaffId.trim()) &&
+      candidateStaffId.trim().length > 0 &&
       candidateEmail.trim().length >= 5 &&
       candidateEmail.includes('@') &&
       candidateEmail.includes('.')
@@ -64,7 +64,7 @@ export default function App() {
   // Start the 100-question assessment
   const startAssessment = () => {
     if (!isFormValid) {
-      alert("Please enter a valid Name, an 8-digit numeric Staff ID, and a valid Email Address before starting the assessment.");
+      alert("Please enter a valid Name, Staff ID, and a valid Email Address before starting the assessment.");
       return;
     }
 
@@ -410,7 +410,7 @@ export default function App() {
                 </div>
 
                 <p className="text-slate-600 text-sm leading-relaxed max-w-lg mx-auto">
-                  Congratulations for completing the LSSGB training session! Now to test your knowledge, you are to complete these two tests as part of the requirements. As this test will not be saved, you are to ensure that you have internet access throughout.
+                  Congratulations on completing the LSSGB training session! To test your knowledge, please complete these tests as part of the requirements. As your progress will not be saved, please ensure that you have stable internet access throughout.
                 </p>
 
                 {/* Exam Constraints List */}
@@ -468,13 +468,8 @@ export default function App() {
                         type="text"
                         required
                         value={candidateStaffId}
-                        onChange={(e) => {
-                          const val = e.target.value.replace(/\D/g, '');
-                          if (val.length <= 8) {
-                            setCandidateStaffId(val);
-                          }
-                        }}
-                        placeholder="e.g. 12345678"
+                        onChange={(e) => setCandidateStaffId(e.target.value)}
+                        placeholder="e.g. 12345"
                         className="w-full px-3.5 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 font-medium transition-all shadow-3xs text-slate-800"
                       />
                     </div>
@@ -926,7 +921,7 @@ export default function App() {
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-slate-900">Confirm Exam Submission</h3>
-                  <p className="text-xs text-slate-500">Please review your solved progress</p>
+                  <p className="text-xs text-slate-500">Please review your progress before submitting</p>
                 </div>
               </div>
 
